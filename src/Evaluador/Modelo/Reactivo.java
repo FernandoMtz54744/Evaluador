@@ -22,7 +22,7 @@ public class Reactivo {
     private String opc_user;
     Conexion cnx;
 
-    //querys SQL
+    //queries SQL
     final String REGISTRAR = "{CALL ReactivoProcedure(0,?,?,?,?,?,?,1)}";
     final String CONSULTA_ALL_REACTIVOS = "{CALL ReactivoProcedure(0,'','','','','','',2)}";
     final String CONSULTAR_ONE_REACTIVO = "{CALL ReactivoProcedure(?,'','','','','','',3)}";
