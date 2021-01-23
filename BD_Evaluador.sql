@@ -1,5 +1,5 @@
 /*
-    Lopez Cortes Jaime Alejandro
+    Cortes Lopez Jaime Alejandro
     Martinez Martinez Fernando
     2CM3
     Proyecto Final de POO - Aplicador y generador de examenes
@@ -167,4 +167,37 @@ insert into Reactivo values(16, 'Cual es el organo mas grande del cuerpo humano?
 insert into Reactivo values(17, 'En que anio llego el primer humano a la luna?', '1950', '1969', '1970', '1955', 'b');    
 insert into Reactivo values(18, 'Cuantos lados tiene un hexagono', '5', '6', '7', '12', 'b');    
 insert into Reactivo values(19, 'En que anio cayo el muro de berlin', '1970', '1980', '1989', '1979', 'c');   
-insert into Reactivo values(20, 'Cual es el pais del Sol naciente?', 'Japon', 'China', 'Australia', 'Italia', 'a');     
+insert into Reactivo values(21, 'Donde esta la torre Eiffer', 'Italia', 'Alemania', 'Francia', 'Polonia', 'c');
+insert into Reactivo values(22, 'En que continente esta Ecuador?', 'Europa', 'Asia', 'Oceania', 'America', 'd');
+insert into Reactivo values(23, 'Capital de Uruguay', 'Santiago', 'Montevideo', 'Buenos aires', 'Madrid', 'b');
+insert into Reactivo values(24, 'Cuanto equivale el numero PI', '9.81', '4.5', '3.14', '1.8182', 'c');
+insert into Reactivo values(25, '¿Cual es el lugar más frio de la Tierra?', 'La Antartida', 'Rusia', 'Alaska', 'Greolandia', 'a');
+insert into Reactivo values(26, 'Cuantos planetas tiene el sistema solar', '6', '7', '8', '9', 'c');
+insert into Reactivo values(27, 'Cual es el pais mas pequenio', 'Vaticano', 'Andorra', 'Francia', 'Polonia', 'a');
+insert into Reactivo values(28, 'Cuantos dientes tiene una persona adulta', '22', '32', '28', '34', 'b');
+insert into Reactivo values(29, 'Capital de Alemania', 'Londres', 'Dublin', 'Berlin', 'Madrid', 'c');
+insert into Reactivo values(30, 'Capital de Suecia', 'Quito', 'Moscu', 'Paris', 'Estocolmo', 'd');
+insert into Reactivo values(31, 'Como se llamara el primer mamifero clonado', 'Dolly', 'Willy', 'Max', 'Laika', 'a');
+insert into Reactivo values(32, 'Quien es el padre del psicoanalisis', 'Sigmund Freud', 'Carl Gustav Jung', 'Skinner', 'Carl Max', 'a');
+insert into Reactivo values(33, 'Cual es el pais mas poblado', 'China', 'Rusia', 'India', 'Mexico', 'a');
+insert into Reactivo values(34, 'En que guerra participo Juana de Arco', 'Indep. de Francia', 'G. civil espaniola', 'G. de los 100 anios', 'G. de Vietnam', 'c');
+insert into Reactivo values(35, 'Que numero sigue? 2,10,12,16,17,18,19,...', '100', '200', '210', '20', 'b');
+insert into Reactivo values(36, 'Quien fue el primer emperador romano?', 'César Augusto', 'Julio Cesar', 'Marco Aurelia', 'Marx', 'a');
+insert into Reactivo values(37, 'En que isla murio Napoleon', 'Sicilia', 'Santa Elena', 'Creta', 'Galapagos', 'b');
+insert into Reactivo values(38, 'Quien escribio la Odisea', 'Homero', 'Virgilio', 'Cervantes', 'Shakespeare', 'a');
+insert into Reactivo values(39, 'A que se le denomina el septimo arte?', 'Pintura', 'Escultura', 'Cine', 'Deporte', 'c');
+insert into Reactivo values(40, 'Que es un melomano?', 'Amante de la musica', 'Amante del cine', 'Amante de comics', 'Amante de melones', 'a');
+insert into Reactivo values(41, 'Quien escibio Cien anios de Soledad', 'Mario V. Llosa', 'Gabriel G. Márquez', 'Camilo Cela', 'Emilio Pacheco', 'b');
+insert into Reactivo values(42, 'Quien pinto La Noche Estrellada', 'Vincent van Gogh', 'Leonardo Da vinci', 'Vincent van Gogh', 'Velazquez', 'a');
+insert into Reactivo values(43, 'Cual es el elemento quimico más abundante?', 'Oxigeno', 'Carbono', 'Helio', 'Nitrogeno', 'a');
+insert into Reactivo values(44, 'Cual fue el primer metal que emplearon los humanos?', 'Acero', 'Oro', 'Cobre', 'Hierro', 'c');
+insert into Reactivo values(45, 'Con que se fabricaba el pergamino?', 'piel humana', 'papel', 'piel de animales', 'hojas de arboles', 'c');
+insert into Reactivo values(46, 'Cual es el primer numero primo?', '0', '1', '2', '3', 'c');
+insert into Reactivo values(47, 'Cual es el simbolo del oro', 'Or', 'Au', 'Ao', 'Eu', 'b');
+insert into Reactivo values(48, 'Cual es la moneda en Reino Unido?', 'Dolar', 'Bolivar', 'Libra', 'Yen', 'c');
+insert into Reactivo values(49, 'Que porcentaje de agua esta compuesto el cuerpo humano?', '70%', '60%', '50%', '80%', 'a');
+insert into Reactivo values(50, 'Quien pinto La ultima cena?', 'Vicent Van Gogh', 'Leonardo Da Vinci', 'Pablo Picasso', 'Diego de Velasquez', 'b');
+
+
+ 
+

@@ -1,7 +1,7 @@
 package Evaluador;
 
 /*
-    Lopez Cortes Jaime Alejandro
+    Cortes Lopez Jaime Alejandro
     Martinez Martinez Fernando
     2CM3
     Proyecto Final de POO - Aplicador y generador de examenes

@@ -121,6 +121,8 @@ public class Login extends JFrame implements ActionListener{
             }else{
                 if(e.getActionCommand().equals("Acerca de")){
                     //se va a ventana acerca de
+                    Acerca a = new Acerca();
+                    dispose();
                 }
             }
         }
