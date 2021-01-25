@@ -9,10 +9,11 @@
 
 //Modelo de examen con sus atributos correspondientes
 
+import java.io.Serializable;
 import java.sql.*;
 
 
-public class Examen {
+public class Examen implements Serializable{
     private int id_examen;
     private int id_usuario;
     private String titulo, fecha;

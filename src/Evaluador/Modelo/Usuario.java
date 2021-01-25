@@ -8,23 +8,25 @@
 */
 
 //Modelo del usuario con sus atributos y métodos correspondientes
+import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Usuario {
+public class Usuario implements Serializable{
+    
     private int id_usuario;
     private String usuario;
     private String pass;
     private String tipo;
     Conexion cnx;
+    private int opcSocket; //1. Registrarse, 2. Login, 5. Consultar Examenes
     
     //querys a ejecutar
-    final String REGISTRARSE = "{CALL UsuarioProcedure(0,?,?,?,1)}";
-    final String INICIAR_SESION = "{CALL UsuarioProcedure(0,?,?,'n',2)}";
-    final String CONSULTAREXAMENES = "{CALL ExamenProcedure(0,?,'','','',0,5)}"; 
+     String REGISTRARSE = "{CALL UsuarioProcedure(0,?,?,?,1)}";
+    String INICIAR_SESION = "{CALL UsuarioProcedure(0,?,?,'n',2)}";
+    String CONSULTAREXAMENES = "{CALL ExamenProcedure(0,?,'','','',0,5)}"; 
 
     public int getId_usuario() {
         return id_usuario;
@@ -56,6 +58,14 @@ public class Usuario {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public int getOpcSocket() {
+        return opcSocket;
+    }
+
+    public void setOpcSocket(int opcSocket) {
+        this.opcSocket = opcSocket;
     }
     
      //Método para registrar un usuario, regresa true si el registro fue exitoso
@@ -128,4 +138,5 @@ public class Usuario {
         }
       return examenes;
     }
+
 }

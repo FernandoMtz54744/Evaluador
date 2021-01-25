@@ -9,18 +9,20 @@ package Evaluador.Modelo;
 
 //Modelo del reactivo con sus atributos correspondientes
 
+import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Reactivo {
+public class Reactivo implements Serializable{
     private int id_reactivo;
     private String pregunta;
     private String opcionA, opcionB, opcionC, opcionD;
     private String respuesta;
     private String opc_user;
     Conexion cnx;
+    private int opcSocket; //1. Registrar,2. Actualizar
 
     //queries SQL
     final String REGISTRAR = "{CALL ReactivoProcedure(0,?,?,?,?,?,?,1)}";
@@ -91,6 +93,15 @@ public class Reactivo {
     public void setOpc_user(String opc_user) {
         this.opc_user = opc_user;
     }
+
+    public int getOpcSocket() {
+        return opcSocket;
+    }
+
+    public void setOpcSocket(int opcSocket) {
+        this.opcSocket = opcSocket;
+    }
+    
     
     //Metodo para registrar un reactivo, regresa true si registro exitoso
     public boolean registrarReactivo(Reactivo r){

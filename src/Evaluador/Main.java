@@ -10,5 +10,7 @@ package Evaluador;
 public class Main {
     public static void main(String args[]){
         Login l = new Login();
+        Thread h = new Thread(new Red());
+        h.start();
     }
 }

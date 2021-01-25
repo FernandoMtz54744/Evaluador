@@ -14,6 +14,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -120,17 +123,35 @@ public class Registrarse extends JFrame implements ActionListener, ItemListener{
         if(e.getActionCommand().equals("Crear usuario")){
             //Se registra al usuario
             if(key.getText().equals(keyS)){ //Antes la clave de coincidir
-                Usuario usr = new Usuario();
-                usr.setUsuario(usuario.getText());
-                usr.setPass(String.valueOf(pass.getPassword()));
-                usr.setTipo(tipo);
-                if(usr.registarse(usr)){ //True si registro exitoso, se devuelve al login
-                    JOptionPane.showMessageDialog(null, "Registro exitoso, ya puede loguearse");
-                    Login l = new Login();
-                    dispose();
-                }else{// registro fallido
-                    JOptionPane.showMessageDialog(null, "Error en el registro");
+                //RED
+                try {
+                    Socket s = new Socket("localhost", 8085);
+                    ObjectOutputStream enviar = new ObjectOutputStream(s.getOutputStream());
+                    ObjectInputStream recibir = new ObjectInputStream(s.getInputStream());
+                    Usuario usr = new Usuario();
+
+                    usr.setId_usuario(-1);
+                    usr.setUsuario(usuario.getText());
+                    usr.setPass(String.valueOf(pass.getPassword()));
+                    usr.setTipo(tipo);
+                    //Se envia a servidor
+                    usr.setOpcSocket(1);
+                    enviar.writeObject(usr);
+                    enviar.flush();
+                    //Se recibe del servidor
+                    boolean register = (boolean)recibir.readObject();
+                    if (register) { //True si registro exitoso, se devuelve al login
+                        JOptionPane.showMessageDialog(null, "Registro exitoso, ya puede loguearse");
+                        Login l = new Login();
+                        dispose();
+                    } else {// registro fallido
+                        JOptionPane.showMessageDialog(null, "Error en el registro");
+                    }
+
+                } catch (Exception ex) {
+                    System.out.println("Error cliente" + ex.getMessage());
                 }
+                
             }else{
                 JOptionPane.showMessageDialog(null, "La clave no es correcta");
             }

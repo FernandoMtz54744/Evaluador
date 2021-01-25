@@ -14,6 +14,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -158,23 +161,47 @@ public class EditPreguntas extends JFrame implements ActionListener, ItemListene
         }else{
             if(e.getActionCommand().equals("Registrar")){
                 //Se crea un reactivo
-                if(r.registrarReactivo(r)){
-                    JOptionPane.showMessageDialog(null, "Reactivo registrado correctamente");
-                    MenuAdmin m = new MenuAdmin();
-                    dispose();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar");
-                }
+                    //RED
+                    try{
+                        Socket s = new Socket("localhost", 8085);
+                        ObjectOutputStream enviar = new ObjectOutputStream(s.getOutputStream());
+                        ObjectInputStream recibir = new ObjectInputStream(s.getInputStream());
+                        r.setOpcSocket(1); 
+                        enviar.writeObject(r);
+                        boolean registro = (boolean) recibir.readObject();
+                        
+                        if (registro) {
+                            JOptionPane.showMessageDialog(null, "Reactivo registrado correctamente");
+                            MenuAdmin m = new MenuAdmin();
+                            dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar");
+                        }
+                    }catch(Exception ex){
+                        System.out.println("Error al registrar preguntas");
+                    }
             }else{
                 if(e.getActionCommand().equals("Actualizar")){
-                    if(r.actualizarReactivo(r)){
-                        JOptionPane.showMessageDialog(null, "Reactivo actualizado correctamente");
-                        MenuAdmin m = new MenuAdmin();
-                        dispose();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar");
+                    
+                     //RED
+                    try{
+                        Socket s = new Socket("localhost", 8085);
+                        ObjectOutputStream enviar = new ObjectOutputStream(s.getOutputStream());
+                        ObjectInputStream recibir = new ObjectInputStream(s.getInputStream());
+                        r.setOpcSocket(2); 
+                        enviar.writeObject(r);
+                        boolean registro = (boolean) recibir.readObject();
+                        
+                        if (registro) {
+                            JOptionPane.showMessageDialog(null, "Reactivo actualizado correctamente");
+                            MenuAdmin m = new MenuAdmin();
+                            dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ocurrio un error al actualizar");
+                        }
+                    }catch(Exception ex){
+                        System.out.println("Error al registrar preguntas");
                     }
-
                 }
             }
         }

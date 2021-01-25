@@ -12,6 +12,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener{
@@ -96,22 +99,34 @@ public class Login extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Login")){
             //Se loguea usuario
-            Usuario usr = new Usuario();
-            usr.setId_usuario(-1);
-            usr.setUsuario(usuario.getText());
-            usr.setPass(String.valueOf(pass.getPassword()));
-            usr = usr.iniciarSesion(usr);
-            if(usr.getId_usuario() != -1){ //se va al menu de usuario
-                if(usr.getTipo().equals("Administrador")){
-                    MenuAdmin m = new MenuAdmin();
-                    dispose();
-                }else{
-                     MenuAlumno m = new MenuAlumno(usr.getId_usuario());
-                     dispose();
-                }
-               
-            }else{//usuario no registrado o datos incorrectos
-                JOptionPane.showMessageDialog(null, "Usuario no registrado o datos incorrectos");
+            //RED
+            try {
+                Socket s = new Socket("localhost", 8085);
+                ObjectOutputStream enviar = new ObjectOutputStream(s.getOutputStream());
+                ObjectInputStream recibir = new ObjectInputStream(s.getInputStream());
+                Usuario usr = new Usuario();
+                usr.setId_usuario(-1);
+                usr.setUsuario(usuario.getText());
+                usr.setPass(String.valueOf(pass.getPassword()));
+                usr.setOpcSocket(2);
+                //Se envia a servidor
+                enviar.writeObject(usr);
+                enviar.flush();
+                //Se recibe del servidor
+                usr = (Usuario) recibir.readObject();
+                    if (usr.getId_usuario() != -1) { //se va al menu de usuario
+                        if (usr.getTipo().equals("Administrador")) {
+                            MenuAdmin m = new MenuAdmin();
+                            dispose();
+                        } else {
+                            MenuAlumno m = new MenuAlumno(usr.getId_usuario());
+                            dispose();
+                        }
+                    }else{//usuario no registrado o datos incorrectos
+                        JOptionPane.showMessageDialog(null, "Usuario no registrado o datos incorrectos");
+                    }
+            } catch (Exception ex) {
+                System.out.println("Error cliente" + ex.getMessage());
             }
         }else{
             if(e.getActionCommand().equals("Registrarse")){
@@ -127,4 +142,7 @@ public class Login extends JFrame implements ActionListener{
             }
         }
     }
+    
+    
+    
 }

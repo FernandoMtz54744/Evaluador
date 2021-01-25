@@ -7,10 +7,11 @@ package Evaluador.Modelo;
     Proyecto Final de POO - Aplicador y generador de examenes
 */
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class Conexion {
+public class Conexion implements Serializable{
    private Connection conexion = null;
     final String MOTOR = "mysql";
     final String SERVIDOR = "localhost";
